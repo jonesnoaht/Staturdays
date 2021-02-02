@@ -1,0 +1,24 @@
+---
+title: "Week 1"
+output: html_notebook
+---
+
+## Intro to Random
+
+Do some coin flips
+
+Look at some combinations and permutations
+
+## Distributions
+
+Look at binomial distribution
+
+Look at generating normal distribution
+
+Sampling distribution and central limit theorem
+
+## Percentiles
+
+SD
+
+Z-scores
