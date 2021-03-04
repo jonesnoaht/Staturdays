@@ -1,0 +1,42 @@
+---
+title: "Showing_Brittany_Up"
+author: "Noah Jones"
+date: "2/5/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Stuff
+
+```{r Generating Data}
+data <- rbind(c(0,1,0,0,0,1,1,1,0), c(0,0,1,0,1,1,1,1,1))
+data <- rbind(data,c(0,1,0,0,0,1,1,1,0))
+```
+
+```{r Counting the Zeros}
+myFunction <- function(data,n){
+i <- 1
+j <- 1
+newData <- c()
+  for (i in 1:length(data[,1])) {
+    counter <- 0
+    for (j in 1:length(data[i,])){
+      if (data[i,j] == 0) {
+        counter <- counter + 1
+      }
+    }
+    if (counter < n){
+      newData <- rbind(newData, data[i,])
+    }
+  }
+  newData
+}
+```
+
+```{r Do the Thing}
+myFunction(data,8)
+```
+

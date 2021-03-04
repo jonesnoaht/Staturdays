@@ -1,0 +1,67 @@
+---
+title: "Week 2"
+output: html_notebook
+---
+
+# How to Test
+
+Must compare samples to distributions . . . 
+
+```{r}
+e <- 2.71828
+x <- 1:10
+y <- x*e^(-x)
+plot(x, y)
+```
+Let's play around with some situations that we might find.
+
+```{r}
+real_binding <- rep(0, 100)
+measurement_error_control <- abs(rnorm(100))
+measurement_error_test <- abs(rnorm(100))
+
+control <- real_binding + measurement_error_control
+test <- real_binding + measurement_error_test
+
+hist(test, 20)
+```
+
+Try modeling exponential distribution with coin flips
+
+```{r}
+data1 <- c()
+data2 <- c()
+x <- c()
+for (i in 1:100000) {
+  a <- round(runif(1, min = 0, max = 100))
+  if (a == 1) {
+    data1 <- c(data1, length(x))
+    x <- c()
+  } 
+  else {
+    x <- c(x, a)
+  }
+}
+qqnorm(data1); qqline(data1, col = 2)
+for (i in 1:100000) {
+  a <- round(runif(1, min = 0, max = 100))
+  if (a == 1) {
+    data2 <- c(data2, length(x))
+    x <- c()
+  } 
+  else {
+    x <- c(x, a)
+  }
+}
+plot(data1, rnorm(length(data1)))
+plot(data1, data1 + 100*rnorm(length(data1)))
+if (length(data1) < length(data2)) {
+  q <- lm(data1[1:length(data2)] ~ data2)
+  plot(data1[1:length(data2)] ~ data2)
+} else {
+  q <- lm(data2[1:length(data1)] ~ data1)
+  plot(data2[1:length(data1)] ~ data1)
+}
+plot(q)
+```
+
