@@ -1,21 +1,40 @@
 ---
 title: "Week 1"
 output: html_notebook
+author: Brittany and Noah
+date: yes
 ---
 
 ## Intro to Random
 
-Do some coin flips
+Do some coin flips.
+
+```{r}
+pdf('plot.pdf', 200, 200)
+x.df <- c()
+y.df <- c()
+for ( i in 1:1000 ) {
+  x <- round(runif(1000, min = 0, max = 1))
+  y <- runif(100, min = 0, max = 1)
+  x.df <- c(x.df, sum(x))
+  y.df <- c(y.df, y)
+}
+hist(x.df, breaks = 20)
+hist(y.df, breaks = 20)
+qqnorm(x.df)
+qqnorm(y.df)
+```
+
 
 Look at some combinations and permutations
 
 ## Distributions
 
-Look at binomial distribution
+ - [ ] Look at binomial distribution
 
-Look at generating normal distribution
+ - [x] Look at generating normal distribution
 
-Sampling distribution and central limit theorem
+ - [ ] Sampling distribution and central limit theorem
 
 ## Percentiles
 

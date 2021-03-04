@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Brittany and Noah" />
 
 
 <title>Week 1</title>
@@ -232,6 +233,8 @@ summary {
 
 
 <h1 class="title toc-ignore">Week 1</h1>
+<h4 class="author">Brittany and Noah</h4>
+<h4 class="date">yes</h4>
 
 </div>
 
@@ -239,14 +242,40 @@ summary {
 <!-- rnb-text-begin -->
 <div id="intro-to-random" class="section level2">
 <h2>Intro to Random</h2>
-<p>Do some coin flips</p>
+<p>Do some coin flips.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGRmKCdwbG90LnBkZicsIDIwMCwgMjAwKVxueC5kZiA8LSBjKClcbnkuZGYgPC0gYygpXG5mb3IgKCBpIGluIDE6MTAwMCApIHtcbiAgeCA8LSByb3VuZChydW5pZigxMDAwLCBtaW4gPSAwLCBtYXggPSAxKSlcbiAgeSA8LSBydW5pZigxMDAsIG1pbiA9IDAsIG1heCA9IDEpXG4gIHguZGYgPC0gYyh4LmRmLCBzdW0oeCkpXG4gIHkuZGYgPC0gYyh5LmRmLCB5KVxufVxuaGlzdCh4LmRmLCBicmVha3MgPSAyMClcbmhpc3QoeS5kZiwgYnJlYWtzID0gMjApXG5gYGAifQ== -->
+<pre class="r"><code>pdf(&#39;plot.pdf&#39;, 200, 200)
+x.df &lt;- c()
+y.df &lt;- c()
+for ( i in 1:1000 ) {
+  x &lt;- round(runif(1000, min = 0, max = 1))
+  y &lt;- runif(100, min = 0, max = 1)
+  x.df &lt;- c(x.df, sum(x))
+  y.df &lt;- c(y.df, y)
+}
+hist(x.df, breaks = 20)
+hist(y.df, breaks = 20)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucXFub3JtKHguZGYpXG5xcW5vcm0oeS5kZilcbmBgYCJ9 -->
+<pre class="r"><code>qqnorm(x.df)
+qqnorm(y.df)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <p>Look at some combinations and permutations</p>
 </div>
 <div id="distributions" class="section level2">
 <h2>Distributions</h2>
-<p>Look at binomial distribution</p>
-<p>Look at generating normal distribution</p>
-<p>Sampling distribution and central limit theorem</p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled></input>
+Look at binomial distribution</p></li>
+<li><p><input type="checkbox" disabled checked></input>
+Look at generating normal distribution</p></li>
+<li><p><input type="checkbox" disabled></input>
+Sampling distribution and central limit theorem</p></li>
+</ul>
 </div>
 <div id="percentiles" class="section level2">
 <h2>Percentiles</h2>
@@ -255,7 +284,7 @@ summary {
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiV2VlayAxIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyBJbnRybyB0byBSYW5kb20KCkRvIHNvbWUgY29pbiBmbGlwcwoKTG9vayBhdCBzb21lIGNvbWJpbmF0aW9ucyBhbmQgcGVybXV0YXRpb25zCgojIyBEaXN0cmlidXRpb25zCgpMb29rIGF0IGJpbm9taWFsIGRpc3RyaWJ1dGlvbgoKTG9vayBhdCBnZW5lcmF0aW5nIG5vcm1hbCBkaXN0cmlidXRpb24KClNhbXBsaW5nIGRpc3RyaWJ1dGlvbiBhbmQgY2VudHJhbCBsaW1pdCB0aGVvcmVtCgojIyBQZXJjZW50aWxlcwoKU0QKClotc2NvcmVz</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiV2VlayAxIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKYXV0aG9yOiBCcml0dGFueSBhbmQgTm9haApkYXRlOiB5ZXMKLS0tCgojIyBJbnRybyB0byBSYW5kb20KCkRvIHNvbWUgY29pbiBmbGlwcy4KCmBgYHtyfQpwZGYoJ3Bsb3QucGRmJywgMjAwLCAyMDApCnguZGYgPC0gYygpCnkuZGYgPC0gYygpCmZvciAoIGkgaW4gMToxMDAwICkgewogIHggPC0gcm91bmQocnVuaWYoMTAwMCwgbWluID0gMCwgbWF4ID0gMSkpCiAgeSA8LSBydW5pZigxMDAsIG1pbiA9IDAsIG1heCA9IDEpCiAgeC5kZiA8LSBjKHguZGYsIHN1bSh4KSkKICB5LmRmIDwtIGMoeS5kZiwgeSkKfQpoaXN0KHguZGYsIGJyZWFrcyA9IDIwKQpoaXN0KHkuZGYsIGJyZWFrcyA9IDIwKQpxcW5vcm0oeC5kZikKcXFub3JtKHkuZGYpCmBgYAoKCkxvb2sgYXQgc29tZSBjb21iaW5hdGlvbnMgYW5kIHBlcm11dGF0aW9ucwoKIyMgRGlzdHJpYnV0aW9ucwoKIC0gWyBdIExvb2sgYXQgYmlub21pYWwgZGlzdHJpYnV0aW9uCgogLSBbeF0gTG9vayBhdCBnZW5lcmF0aW5nIG5vcm1hbCBkaXN0cmlidXRpb24KCiAtIFsgXSBTYW1wbGluZyBkaXN0cmlidXRpb24gYW5kIGNlbnRyYWwgbGltaXQgdGhlb3JlbQoKIyMgUGVyY2VudGlsZXMKClNECgpaLXNjb3Jlcw==</div>
 
 
 
