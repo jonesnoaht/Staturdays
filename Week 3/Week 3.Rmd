@@ -1,0 +1,87 @@
+---
+title: "Week 3"
+author: "Noah Jones"
+date: "3/6/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+# Resources
+
+Today we are going to try to figure out how to fit to a distribution. [This](https://www.cyclismo.org/tutorial/R/linearLeastSquares.html) might be a useful resource.
+
+```{r Looking at the Normal Distribution}
+hist(rnorm(1000), breaks = 20)
+plot(dnorm(seq(-1, 1, 0.01)), type = 'l')
+plot(pnorm(seq(-1, 1, 0.01)), type = 'l')
+```
+
+It looks like the probability density function is what we are probably looking for. To generate a linear model, we have to describe the two data sets such that they vary together. Perhaps the quantiles co-vary, or their ranks co-vary. Something like that. I think quantiles might be the most appropriate.
+
+```{r}
+plot(qnorm(seq(.001, .999, .001)), type = "l")
+```
+
+```{r}
+v <- quantile(rnorm(1000), seq(.01, .99, .01)) - 
+  qnorm(seq(.01, .99, .01))
+plot(v)
+```
+
+# Quantile Plots
+
+We demonstrate that by plotting the quantiles of a dataset against the quantiles of a distribution, we can infer whether the data set matches the distribution.
+
+```{r Q-Q Plot for Normal Distribution}
+cbind(quantile(rnorm(1000)*10, seq(.01, .99, .01)), qnorm(seq(.01, .99, .01))) %>% 
+  data.frame() -> df1
+plot(X1 ~ X2, df1)
+lm(X1 ~ X2, df1) %>% summary()
+```
+
+
+
+```{r Normal Distribution}
+cbind(quantile(runif(1000)*10, seq(.01, .99, .01)), qnorm(seq(.01, .99, .01))) %>% 
+  data.frame() -> df2
+plot(X1 ~ X2, df2)
+lm(X1 ~ X2, df2) %>% summary()
+```
+
+```{r Uniform Distribution}
+cbind(quantile(runif(1000)*10, seq(.01, .99, .01)),
+      qunif(seq(.01, .99, .01))
+      ) %>% 
+  data.frame() -> df3
+plot(X1 ~ X2, df3)
+lm(X1 ~ X2, df3) %>% summary()
+```
+
+```{r Poison Distribution}
+cbind(quantile(rpois(1000, 10)*10, seq(.01, .99, .01)), 
+      qpois(seq(.01, .99, .01), 10)
+      ) %>% 
+  data.frame() -> df3
+plot(X1 ~ X2, df3)
+lm(X1 ~ X2, df3) %>% summary()
+```
+```{r Other Distributions}
+rnorm(100) %>% hist(breaks = 10, main = "Normal")
+runif(100) %>% hist(breaks = 10, main = "Uniform")
+rbinom(100, 1, 0.5) %>% hist(breaks = 2, main = "Binomial")
+rpois(100, 10) %>% hist(breaks = 10, main = "Poison")
+rhyper(100, 1000, 500, 200) %>% 
+  hist(breaks = 10, main = "Hyper")
+sample(1:6, 100, replace = T, prob = rep(1/6,6)) %>% 
+  hist(breaks = 10, main = "Sampling with Replacement")
+rcauchy(100) %>% hist(breaks = 10, main = "Cauchy")
+rchisq(100, 4) %>% hist(breaks = 10, main = "Chi Squared")
+rgamma(100, 1, 0.5) %>% hist(breaks = 10, main = "Gamma")
+rlnorm(100, 0, 1) %>% hist(breaks = 10, main = "Log Normal")
+rt(100, 10) %>% hist(breaks = 10, main = "Student's")
+```
+
